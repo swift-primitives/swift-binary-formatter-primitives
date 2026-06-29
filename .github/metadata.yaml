@@ -1,0 +1,11 @@
+# .github/metadata.yaml
+description: "Byte-stream formatter for Swift — renders binary data (a Collection of bytes) as human-readable hexadecimal text, continuous (\"deadbeef\") or spaced (\"de ad be ef\"). Composes per-byte hex; Foundation-free."
+topics:
+  - primitives
+  - binary
+  - formatter
+  - hexadecimal
+  - byte-stream
+homepage: "https://swift-institute.org"
+readme:
+  family: E
