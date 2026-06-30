@@ -12,13 +12,7 @@ let package = Package(
         .visionOS(.v26),
     ],
     products: [
-        // MARK: - Sub-namespaces
-        .library(
-            name: "Binary Format Primitives",
-            targets: ["Binary Format Primitives"]
-        ),
-
-        // MARK: - Umbrella
+        // MARK: - Library
         .library(
             name: "Binary Formatter Primitives",
             targets: ["Binary Formatter Primitives"]
@@ -36,29 +30,21 @@ let package = Package(
         .package(url: "https://github.com/swift-primitives/swift-formatter-primitives.git", branch: "main"),
     ],
     targets: [
-        // MARK: - Sub-namespace: byte-stream hex formatting
+        // MARK: - Byte-stream hex formatting
         //
-        // `Binary.Format` — renders a stream of bytes (any `Collection` of
-        // `Byte`) as hexadecimal text, composing `Byte.Format` per byte rather
+        // `Binary.Formatter` — renders a stream of bytes (any `Collection` of
+        // `Byte`) as hexadecimal text, composing `Byte.Formatter` per byte rather
         // than re-implementing hex. Grouping is controlled by a separator
         // (continuous "deadbeef" vs spaced "de ad be ef"); the base / digit
         // alphabet / case flow through from the composed per-byte formatter.
-        // Depends on `Binary` (for the namespace), `Byte.Format` (per-byte hex),
+        // Depends on `Binary` (for the namespace), `Byte.Formatter` (per-byte hex),
         // and the `Formatter.Protocol` capability.
-        .target(
-            name: "Binary Format Primitives",
-            dependencies: [
-                .product(name: "Binary Primitive", package: "swift-binary-primitives"),
-                .product(name: "Byte Format Primitives", package: "swift-byte-formatter-primitives"),
-                .product(name: "Formatter Primitives", package: "swift-formatter-primitives"),
-            ]
-        ),
-
-        // MARK: - Umbrella
         .target(
             name: "Binary Formatter Primitives",
             dependencies: [
-                "Binary Format Primitives",
+                .product(name: "Binary Primitive", package: "swift-binary-primitives"),
+                .product(name: "Byte Formatter Primitives", package: "swift-byte-formatter-primitives"),
+                .product(name: "Formatter Primitives", package: "swift-formatter-primitives"),
             ]
         ),
 
